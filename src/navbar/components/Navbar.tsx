@@ -27,9 +27,9 @@ function Navbar() {
   }
 
   return (
-    <div className={`fixed top-0 z-50 bg-gradient-to-tl 
-    ${colorToggle ? "from-custom-accent to-custom-primary  text-white" :
-      "from-custom-primary to-custom-accent  text-custom-black"
+    <div className={`fixed top-0 z-50 bg-gradient-to-b 
+    ${colorToggle ? "from-custom-primary to-custom-primary  text-white" :
+      "from-custom-secondary to-custom-secondary  text-custom-black"
     }
     flex md:flex-row ${menuOpen ? "flex-col" : "flex-row"} w-full mx-auto pt-2`}>
       <div className="flex items-center justify-between w-full md:w-auto  px-4">
@@ -55,7 +55,10 @@ function Navbar() {
       <div className={`${menuOpen ? "p-3" : "hidden"}`}>
         <ul className={`md:hidden flex-col flex items-start justify-between gap-2`}>
           {navItems.map((item, index) => (
-            <div className="bg-custom-secondary rounded-xl text-center text-custom-black w-full p-[8px]">
+            <div className={`rounded-xl text-center shadow-md w-full p-[8px]
+            ${colorToggle ? "bg-custom-secondary shadow-custom-accent text-custom-black" 
+            : "bg-custom-primary shadow-custom-accent text-custom-white"}
+              `}>
               <NavbarLink key={index} text={item.text} url={item.url} />
             </div>
           ))}

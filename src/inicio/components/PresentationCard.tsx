@@ -50,7 +50,7 @@ function PresentationCard({
         ${getTextColorClass("text-custom-black", "text-custom-white")}
         text-[17px] font-text`}
         >
-          {description}
+          {"Regular" + description}
         </p>
       </div>
       <div className="flex-1 md:w-30 flex items-center justify-center">

@@ -7,6 +7,7 @@ import patternBlack from "../../assets/img/Patters/tenderoPrimSec.png";
 import PresentationCard from "./PresentationCard";
 import PresentationCardProp from "../types/PresentationCardProp";
 import { useGlobalColorToggle } from "../../context/ToggleManager";
+import Suscripciones from "../../suscripciones/components/Suscripciones"
 import "../../assets/css/textShadow.css"
 
 function Inicio() {

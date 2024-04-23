@@ -2,8 +2,11 @@ import React, { useState } from "react";
 import NavbarLink from "./NavbarLink";
 import LogoPrin1 from "../../assets/img/LogoPrin1.png";
 import NavbarLinkProp from "../types/NavbarLinkProp";
+import { useGlobalColorToggle } from "../../context/ToggleManager";
 
 function Navbar() {
+  const { colorToggle, setColorToggle } = useGlobalColorToggle();
+
   const navItems: NavbarLinkProp[] = [
     { text: "Productos", url: "" },
     { text: "Nosotros", url: "" },
@@ -18,13 +21,24 @@ function Navbar() {
     setMenuOpen(!menuOpen);
   };
 
+  const toggleColor = () => {
+    setColorToggle(!colorToggle)
+    console.log(colorToggle)
+  }
+
   return (
-    <div className={`relative bg-gradient-to-b from-custom-primary to-custom-black 
-    flex md:flex-row ${menuOpen ? "flex-col" : "flex-row"} w-full mx-auto pt-2 text-white`}>
+    <div className={`fixed top-0 z-50 bg-gradient-to-tl 
+    ${colorToggle ? "from-custom-accent to-custom-primary  text-white" :
+      "from-custom-primary to-custom-accent  text-custom-black"
+    }
+    flex md:flex-row ${menuOpen ? "flex-col" : "flex-row"} w-full mx-auto pt-2`}>
       <div className="flex items-center justify-between w-full md:w-auto  px-4">
         <img src={LogoPrin1} alt="" className="w-[75px] h-auto mr-10" />
         <button onClick={toggleMenu} className="md:hidden">
           Menu
+        </button>
+        <button onClick={toggleColor} className="bg-custom-white">
+          Toggle
         </button>
       </div>
       <div className={`md:flex ${menuOpen ? "hidden" : "flex"}`}>
@@ -41,7 +55,7 @@ function Navbar() {
       <div className={`${menuOpen ? "p-3" : "hidden"}`}>
         <ul className={`md:hidden flex-col flex items-start justify-between gap-2`}>
           {navItems.map((item, index) => (
-            <div className="bg-custom-secondary text-custom-black w-full p-[8px]">
+            <div className="bg-custom-secondary rounded-xl text-center text-custom-black w-full p-[8px]">
               <NavbarLink key={index} text={item.text} url={item.url} />
             </div>
           ))}

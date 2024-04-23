@@ -15,7 +15,7 @@ function CardText({ textType, content }: CardTextProp) {
       break;
     case 'text':
     default:
-      fontStyleClass += 'font-text text-[15] text-wrap text-custom-white'; // Por ejemplo, fuente normal y tamaño de fuente base
+      fontStyleClass += 'font-text text-[15px] text-wrap text-custom-white'; // Por ejemplo, fuente normal y tamaño de fuente base
       break;
   }
 
